@@ -1,0 +1,361 @@
+query_text,label,repeat_count
+recommend related items to a ceramic coffee mug,vector,1
+products semantically related to outdoor camping gear,vector,1
+lookup product id: 142,redis,4
+product:107,redis,11
+count orders group by status for country IN,postgres,0
+find products similar to a cozy noise-cancelling headphone,vector,0
+recommend related items to a ceramic coffee mug,vector,0
+product:107,redis,10
+average order quantity group by product_id,postgres,0
+recommend related items to a ceramic coffee mug,vector,0
+find products similar to a cozy noise-cancelling headphone,vector,1
+filter products where in_stock = true and category = 'sports',postgres,0
+fetch id 69 details,redis,11
+recommend items like this cotton yoga mat,vector,1
+fetch id 107 details,redis,5
+join customers and orders where signup_date between last month,postgres,0
+get product by id 107,redis,5
+recommend related items to a ceramic coffee mug,vector,0
+fetch id 12 details,redis,15
+product:12,redis,3
+join customers and orders where signup_date between last month,postgres,0
+product:87,redis,8
+products semantically related to outdoor camping gear,vector,1
+get product by id 142,redis,3
+select orders where customer_id = 384 and status = 'shipped',postgres,0
+average order quantity group by product_id,postgres,1
+product:142,redis,4
+filter products where in_stock = true and category = 'sports',postgres,0
+count orders group by status for country IN,postgres,0
+find products similar to a cozy noise-cancelling headphone,vector,1
+lookup product id: 142,redis,4
+get product by id 142,redis,3
+recommend items like this cotton yoga mat,vector,0
+sum revenue where category = 'electronics' and price greater than 105,postgres,0
+recommend related items to a ceramic coffee mug,vector,1
+find me something with a similar vibe to a leather backpack,vector,1
+sum revenue where category = 'electronics' and price greater than 367,postgres,0
+select orders where customer_id = 486 and status = 'shipped',postgres,0
+select orders where customer_id = 317 and status = 'shipped',postgres,0
+product:3,redis,9
+what products resemble a minimalist desk lamp,vector,0
+fetch id 142 details,redis,10
+products semantically related to outdoor camping gear,vector,0
+select customers where country = 'US' and is_active = true,postgres,0
+join customers and orders where signup_date between last month,postgres,0
+recommend items like this cotton yoga mat,vector,0
+products semantically related to outdoor camping gear,vector,0
+find products similar to a cozy noise-cancelling headphone,vector,0
+get product by id 142,redis,5
+recommend items like this cotton yoga mat,vector,1
+quick lookup for id 117,redis,5
+recommend related items to a ceramic coffee mug,vector,0
+fetch id 12 details,redis,9
+what products resemble a minimalist desk lamp,vector,0
+fetch id 87 details,redis,8
+get product by id 12,redis,7
+join customers and orders where signup_date between last month,postgres,0
+join customers and orders where signup_date between last month,postgres,1
+closest matches to a lightweight running shoe description,vector,0
+select orders where customer_id = 86 and status = 'shipped',postgres,0
+recommend related items to a ceramic coffee mug,vector,0
+count orders group by status for country IN,postgres,0
+quick lookup for id 12,redis,6
+find products similar to a cozy noise-cancelling headphone,vector,1
+products semantically related to outdoor camping gear,vector,0
+get product by id 69,redis,9
+get product by id 87,redis,10
+find products similar to a cozy noise-cancelling headphone,vector,1
+recommend related items to a ceramic coffee mug,vector,0
+find products similar to a cozy noise-cancelling headphone,vector,1
+products semantically related to outdoor camping gear,vector,0
+products semantically related to outdoor camping gear,vector,1
+get product by id 69,redis,5
+select orders where customer_id = 466 and status = 'shipped',postgres,1
+product:12,redis,5
+get product by id 69,redis,8
+products semantically related to outdoor camping gear,vector,0
+what products resemble a minimalist desk lamp,vector,1
+products semantically related to outdoor camping gear,vector,0
+lookup product id: 142,redis,14
+lookup product id: 69,redis,3
+recommend related items to a ceramic coffee mug,vector,0
+get product by id 107,redis,14
+recommend related items to a ceramic coffee mug,vector,0
+join customers and orders where signup_date between last month,postgres,0
+lookup product id: 87,redis,7
+lookup product id: 69,redis,15
+product:87,redis,9
+count orders group by status for country IN,postgres,0
+fetch id 12 details,redis,14
+join customers and orders where signup_date between last month,postgres,0
+product:142,redis,7
+average order quantity group by product_id,postgres,0
+sum revenue where category = 'electronics' and price greater than 154,postgres,0
+fetch id 3 details,redis,9
+average order quantity group by product_id,postgres,0
+filter products where in_stock = true and category = 'sports',postgres,0
+recommend related items to a ceramic coffee mug,vector,0
+quick lookup for id 34,redis,5
+product:107,redis,5
+average order quantity group by product_id,postgres,1
+product:69,redis,5
+product:12,redis,7
+what products resemble a minimalist desk lamp,vector,1
+fetch id 3 details,redis,6
+what products resemble a minimalist desk lamp,vector,1
+product:117,redis,15
+get product by id 142,redis,12
+join customers and orders where signup_date between last month,postgres,1
+average order quantity group by product_id,postgres,0
+product:142,redis,9
+average order quantity group by product_id,postgres,0
+find me something with a similar vibe to a leather backpack,vector,0
+lookup product id: 69,redis,10
+count orders group by status for country IN,postgres,0
+recommend related items to a ceramic coffee mug,vector,1
+quick lookup for id 3,redis,11
+join customers and orders where signup_date between last month,postgres,0
+find me something with a similar vibe to a leather backpack,vector,0
+lookup product id: 107,redis,6
+filter products where in_stock = true and category = 'sports',postgres,0
+closest matches to a lightweight running shoe description,vector,0
+fetch id 87 details,redis,7
+recommend items like this cotton yoga mat,vector,1
+find me something with a similar vibe to a leather backpack,vector,1
+recommend items like this cotton yoga mat,vector,0
+what products resemble a minimalist desk lamp,vector,0
+find products similar to a cozy noise-cancelling headphone,vector,0
+filter products where in_stock = true and category = 'sports',postgres,0
+select customers where country = 'US' and is_active = true,postgres,1
+fetch id 142 details,redis,4
+get product by id 107,redis,12
+what products resemble a minimalist desk lamp,vector,0
+find me something with a similar vibe to a leather backpack,vector,0
+closest matches to a lightweight running shoe description,vector,1
+closest matches to a lightweight running shoe description,vector,0
+sum revenue where category = 'electronics' and price greater than 375,postgres,0
+fetch id 69 details,redis,7
+select customers where country = 'US' and is_active = true,postgres,0
+product:34,redis,12
+get product by id 107,redis,10
+product:3,redis,13
+recommend related items to a ceramic coffee mug,vector,0
+recommend related items to a ceramic coffee mug,vector,0
+select orders where customer_id = 466 and status = 'shipped',postgres,0
+products semantically related to outdoor camping gear,vector,0
+filter products where in_stock = true and category = 'sports',postgres,0
+average order quantity group by product_id,postgres,0
+filter products where in_stock = true and category = 'sports',postgres,1
+fetch id 69 details,redis,15
+select orders where customer_id = 421 and status = 'shipped',postgres,1
+average order quantity group by product_id,postgres,0
+get product by id 69,redis,10
+select customers where country = 'US' and is_active = true,postgres,0
+get product by id 12,redis,11
+find me something with a similar vibe to a leather backpack,vector,0
+fetch id 142 details,redis,10
+get product by id 142,redis,14
+find products similar to a cozy noise-cancelling headphone,vector,0
+closest matches to a lightweight running shoe description,vector,0
+what products resemble a minimalist desk lamp,vector,0
+count orders group by status for country IN,postgres,0
+join customers and orders where signup_date between last month,postgres,0
+products semantically related to outdoor camping gear,vector,1
+find me something with a similar vibe to a leather backpack,vector,1
+recommend related items to a ceramic coffee mug,vector,1
+find products similar to a cozy noise-cancelling headphone,vector,0
+filter products where in_stock = true and category = 'sports',postgres,0
+select customers where country = 'US' and is_active = true,postgres,0
+join customers and orders where signup_date between last month,postgres,1
+filter products where in_stock = true and category = 'sports',postgres,1
+get product by id 87,redis,10
+lookup product id: 3,redis,13
+join customers and orders where signup_date between last month,postgres,0
+select customers where country = 'US' and is_active = true,postgres,1
+average order quantity group by product_id,postgres,0
+sum revenue where category = 'electronics' and price greater than 44,postgres,0
+fetch id 87 details,redis,10
+get product by id 117,redis,14
+closest matches to a lightweight running shoe description,vector,0
+product:34,redis,12
+quick lookup for id 3,redis,4
+sum revenue where category = 'electronics' and price greater than 287,postgres,1
+fetch id 107 details,redis,13
+recommend items like this cotton yoga mat,vector,0
+products semantically related to outdoor camping gear,vector,0
+average order quantity group by product_id,postgres,1
+count orders group by status for country IN,postgres,0
+recommend related items to a ceramic coffee mug,vector,0
+select orders where customer_id = 75 and status = 'shipped',postgres,0
+get product by id 87,redis,14
+lookup product id: 3,redis,14
+count orders group by status for country IN,postgres,1
+quick lookup for id 12,redis,3
+find products similar to a cozy noise-cancelling headphone,vector,0
+select customers where country = 'US' and is_active = true,postgres,0
+sum revenue where category = 'electronics' and price greater than 490,postgres,0
+select orders where customer_id = 112 and status = 'shipped',postgres,0
+lookup product id: 107,redis,8
+products semantically related to outdoor camping gear,vector,1
+fetch id 117 details,redis,3
+get product by id 3,redis,13
+what products resemble a minimalist desk lamp,vector,0
+what products resemble a minimalist desk lamp,vector,0
+get product by id 117,redis,13
+join customers and orders where signup_date between last month,postgres,1
+select orders where customer_id = 113 and status = 'shipped',postgres,0
+find me something with a similar vibe to a leather backpack,vector,1
+find products similar to a cozy noise-cancelling headphone,vector,1
+closest matches to a lightweight running shoe description,vector,1
+filter products where in_stock = true and category = 'sports',postgres,0
+sum revenue where category = 'electronics' and price greater than 396,postgres,0
+join customers and orders where signup_date between last month,postgres,0
+recommend related items to a ceramic coffee mug,vector,0
+recommend items like this cotton yoga mat,vector,0
+filter products where in_stock = true and category = 'sports',postgres,0
+average order quantity group by product_id,postgres,0
+select customers where country = 'US' and is_active = true,postgres,0
+what products resemble a minimalist desk lamp,vector,0
+join customers and orders where signup_date between last month,postgres,0
+fetch id 142 details,redis,13
+product:12,redis,7
+quick lookup for id 107,redis,6
+fetch id 12 details,redis,15
+lookup product id: 3,redis,9
+quick lookup for id 87,redis,11
+get product by id 87,redis,8
+find me something with a similar vibe to a leather backpack,vector,0
+filter products where in_stock = true and category = 'sports',postgres,0
+quick lookup for id 117,redis,13
+recommend items like this cotton yoga mat,vector,0
+get product by id 142,redis,14
+join customers and orders where signup_date between last month,postgres,1
+fetch id 107 details,redis,9
+recommend items like this cotton yoga mat,vector,0
+products semantically related to outdoor camping gear,vector,1
+products semantically related to outdoor camping gear,vector,0
+quick lookup for id 34,redis,7
+filter products where in_stock = true and category = 'sports',postgres,0
+select orders where customer_id = 60 and status = 'shipped',postgres,0
+select orders where customer_id = 32 and status = 'shipped',postgres,1
+product:117,redis,3
+get product by id 87,redis,6
+get product by id 12,redis,7
+recommend items like this cotton yoga mat,vector,0
+select customers where country = 'US' and is_active = true,postgres,1
+find me something with a similar vibe to a leather backpack,vector,0
+recommend related items to a ceramic coffee mug,vector,0
+quick lookup for id 107,redis,8
+average order quantity group by product_id,postgres,1
+filter products where in_stock = true and category = 'sports',postgres,0
+join customers and orders where signup_date between last month,postgres,0
+filter products where in_stock = true and category = 'sports',postgres,1
+products semantically related to outdoor camping gear,vector,1
+select orders where customer_id = 286 and status = 'shipped',postgres,0
+find me something with a similar vibe to a leather backpack,vector,0
+select orders where customer_id = 247 and status = 'shipped',postgres,1
+join customers and orders where signup_date between last month,postgres,0
+sum revenue where category = 'electronics' and price greater than 489,postgres,0
+select customers where country = 'US' and is_active = true,postgres,0
+find products similar to a cozy noise-cancelling headphone,vector,0
+select orders where customer_id = 107 and status = 'shipped',postgres,0
+product:117,redis,7
+closest matches to a lightweight running shoe description,vector,0
+quick lookup for id 142,redis,10
+fetch id 34 details,redis,4
+average order quantity group by product_id,postgres,0
+quick lookup for id 107,redis,13
+fetch id 87 details,redis,11
+closest matches to a lightweight running shoe description,vector,1
+recommend items like this cotton yoga mat,vector,0
+filter products where in_stock = true and category = 'sports',postgres,1
+find products similar to a cozy noise-cancelling headphone,vector,0
+select customers where country = 'US' and is_active = true,postgres,0
+fetch id 107 details,redis,8
+products semantically related to outdoor camping gear,vector,0
+average order quantity group by product_id,postgres,0
+lookup product id: 142,redis,9
+select orders where customer_id = 405 and status = 'shipped',postgres,0
+join customers and orders where signup_date between last month,postgres,0
+quick lookup for id 34,redis,13
+find products similar to a cozy noise-cancelling headphone,vector,1
+select orders where customer_id = 188 and status = 'shipped',postgres,1
+select customers where country = 'US' and is_active = true,postgres,0
+find me something with a similar vibe to a leather backpack,vector,0
+what products resemble a minimalist desk lamp,vector,1
+get product by id 142,redis,12
+products semantically related to outdoor camping gear,vector,0
+count orders group by status for country IN,postgres,1
+lookup product id: 142,redis,8
+product:12,redis,9
+find me something with a similar vibe to a leather backpack,vector,0
+find products similar to a cozy noise-cancelling headphone,vector,0
+select orders where customer_id = 428 and status = 'shipped',postgres,1
+recommend related items to a ceramic coffee mug,vector,1
+join customers and orders where signup_date between last month,postgres,1
+products semantically related to outdoor camping gear,vector,1
+get product by id 117,redis,13
+sum revenue where category = 'electronics' and price greater than 326,postgres,0
+select orders where customer_id = 296 and status = 'shipped',postgres,1
+filter products where in_stock = true and category = 'sports',postgres,1
+recommend related items to a ceramic coffee mug,vector,0
+what products resemble a minimalist desk lamp,vector,0
+sum revenue where category = 'electronics' and price greater than 215,postgres,0
+recommend items like this cotton yoga mat,vector,0
+quick lookup for id 117,redis,15
+find me something with a similar vibe to a leather backpack,vector,1
+lookup product id: 142,redis,11
+quick lookup for id 107,redis,15
+find me something with a similar vibe to a leather backpack,vector,1
+recommend items like this cotton yoga mat,vector,0
+find products similar to a cozy noise-cancelling headphone,vector,0
+find products similar to a cozy noise-cancelling headphone,vector,0
+recommend items like this cotton yoga mat,vector,1
+quick lookup for id 87,redis,9
+count orders group by status for country IN,postgres,0
+get product by id 34,redis,5
+get product by id 12,redis,11
+product:34,redis,9
+what products resemble a minimalist desk lamp,vector,0
+recommend items like this cotton yoga mat,vector,0
+filter products where in_stock = true and category = 'sports',postgres,1
+quick lookup for id 107,redis,12
+quick lookup for id 107,redis,13
+find me something with a similar vibe to a leather backpack,vector,1
+filter products where in_stock = true and category = 'sports',postgres,0
+count orders group by status for country IN,postgres,0
+average order quantity group by product_id,postgres,0
+recommend related items to a ceramic coffee mug,vector,0
+get product by id 107,redis,7
+get product by id 142,redis,7
+recommend items like this cotton yoga mat,vector,1
+product:69,redis,4
+filter products where in_stock = true and category = 'sports',postgres,0
+recommend items like this cotton yoga mat,vector,1
+product:69,redis,3
+sum revenue where category = 'electronics' and price greater than 50,postgres,1
+fetch id 3 details,redis,6
+join customers and orders where signup_date between last month,postgres,0
+filter products where in_stock = true and category = 'sports',postgres,1
+lookup product id: 117,redis,3
+average order quantity group by product_id,postgres,1
+lookup product id: 117,redis,13
+average order quantity group by product_id,postgres,1
+find products similar to a cozy noise-cancelling headphone,vector,1
+quick lookup for id 34,redis,11
+product:142,redis,7
+get product by id 34,redis,10
+select orders where customer_id = 291 and status = 'shipped',postgres,0
+filter products where in_stock = true and category = 'sports',postgres,0
+select customers where country = 'US' and is_active = true,postgres,0
+select customers where country = 'US' and is_active = true,postgres,0
+recommend items like this cotton yoga mat,vector,0
+closest matches to a lightweight running shoe description,vector,0
+recommend related items to a ceramic coffee mug,vector,0
+get product by id 117,redis,7
+recommend items like this cotton yoga mat,vector,1
+sum revenue where category = 'electronics' and price greater than 356,postgres,0
+sum revenue where category = 'electronics' and price greater than 486,postgres,0
+product:34,redis,11

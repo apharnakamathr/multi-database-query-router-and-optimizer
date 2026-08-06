@@ -1,0 +1,96 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: ankane/pgvector:latest   
+    container_name: router_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-router}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-router_pw}
+      POSTGRES_DB: ${POSTGRES_DB:-router_db}
+    ports:
+      - "5433:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+      - ./sql/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-router}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      
+  pgbouncer:
+    image: edoburu/pgbouncer:1.21.0-p0
+    container_name: router_pgbouncer
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: ${POSTGRES_DB:-router_db}
+      DB_USER: ${POSTGRES_USER:-router}
+      DB_PASSWORD: ${POSTGRES_PASSWORD:-router_pw}
+      LISTEN_PORT: 6432
+      POOL_MODE: transaction
+      MAX_CLIENT_CONN: 200
+      DEFAULT_POOL_SIZE: 20
+      AUTH_TYPE: plain
+    ports:
+      - "6432:6432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -h localhost -p 6432 -U ${POSTGRES_USER:-router}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    container_name: router_redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  router_api:
+    build: .
+    container_name: router_api
+    restart: unless-stopped
+    depends_on:
+      pgbouncer:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    environment:
+      PGBOUNCER_HOST: pgbouncer
+      PGBOUNCER_PORT: 6432
+      POSTGRES_USER: ${POSTGRES_USER:-router}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-router_pw}
+      POSTGRES_DB: ${POSTGRES_DB:-router_db}
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      CORS_ORIGINS: ${CORS_ORIGINS:-*}
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./classifier/model.pkl:/app/classifier/model.pkl
+
+  dashboard:
+    build: ./dashboard
+    container_name: router_dashboard
+    restart: unless-stopped
+    depends_on:
+      - router_api
+    environment:
+      VITE_API_BASE_URL: ${DASHBOARD_API_BASE_URL:-http://localhost:8000}
+    ports:
+      - "5173:5173"
+
+volumes:
+  pg_data:

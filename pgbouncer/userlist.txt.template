@@ -1,0 +1,11 @@
+# Reference only -- the docker-compose setup uses the edoburu/pgbouncer
+# image's env-var auth (AUTH_TYPE=plain) for local dev simplicity.
+#
+# For a manual/production PgBouncer install with auth_type=md5 in
+# pgbouncer.ini, generate the real userlist.txt with:
+#
+#   echo -n "md5$(echo -n '<password><username>' | md5sum | awk '{print $1}')"
+#
+# then write a line like:
+#   "router" "md5<hash>"
+"router" "md5REPLACE_WITH_GENERATED_HASH"

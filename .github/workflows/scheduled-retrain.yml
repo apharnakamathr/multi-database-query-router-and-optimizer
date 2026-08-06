@@ -1,0 +1,36 @@
+name: Scheduled classifier retrain (Phase 4)
+
+on:
+  schedule:
+    - cron: "0 3 * * *"   # daily at 03:00 UTC
+  workflow_dispatch: {}     # allow manual trigger from the Actions tab
+
+jobs:
+  retrain:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Retrain from live query_log
+        env:
+          POSTGRES_HOST: ${{ secrets.PROD_POSTGRES_HOST }}
+          PGBOUNCER_HOST: ${{ secrets.PROD_PGBOUNCER_HOST }}
+          POSTGRES_USER: ${{ secrets.PROD_POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.PROD_POSTGRES_PASSWORD }}
+          POSTGRES_DB: ${{ secrets.PROD_POSTGRES_DB }}
+        run: python classifier/retrain_from_logs.py --since-hours 168
+
+      - name: Commit promoted model.pkl (if changed)
+        run: |
+          git config user.name "retrain-bot"
+          git config user.email "retrain-bot@users.noreply.github.com"
+          git add classifier/model.pkl
+          git diff --cached --quiet || git commit -m "chore: promote retrained classifier [skip ci]"
+          git push || echo "nothing to push"
