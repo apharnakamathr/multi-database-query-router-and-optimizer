@@ -1,9 +1,8 @@
 """
-Phase 4 steps 8-9: periodically recalibrate the classifier using real
+This periodically recalibrates the classifier using real
 execution history from query_log, instead of only the synthetic bootstrap
-set from Phase 3.
-
-The hard problem the project doc calls out: avoiding a feedback loop that
+set.
+The hard problem the project calls out: avoiding a feedback loop that
 reinforces bad early routing decisions, and actually *validating* that a
 retrain improves routing rather than just memorizing recent traffic. This
 script handles that with three guardrails:
@@ -23,10 +22,6 @@ script handles that with three guardrails:
      lets you tell "the retrain actually generalizes better" apart from
      "the retrain just overfit to this week's traffic."
 
-Run with:
-    python classifier/retrain_from_logs.py
-Intended to run on a schedule (cron / GitHub Actions schedule -- see
-README's "Phase 4: scheduling retrains" section).
 """
 import argparse
 import csv
