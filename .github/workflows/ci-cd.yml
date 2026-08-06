@@ -1,15 +1,12 @@
 name: CI/CD
-
 on:
   push:
     branches: [main]
   pull_request:
     branches: [main]
-
 env:
   IMAGE_ROUTER: ghcr.io/${{ github.repository }}/router-api
   IMAGE_DASHBOARD: ghcr.io/${{ github.repository }}/dashboard
-
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -34,25 +31,19 @@ jobs:
           --health-interval 5s
           --health-timeout 5s
           --health-retries 10
-
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-
       - name: Install dependencies
         run: pip install -r requirements.txt
-
       - name: Apply schema
         run: |
           sudo apt-get update && sudo apt-get install -y postgresql-client
           PGPASSWORD=router_pw psql -h localhost -U router -d router_db -f sql/init.sql
-
       - name: Offline routing sanity check (no live DB needed for this one)
         run: python -m tests.test_routing_offline
-
       - name: Seed data + train classifier (uses the live services above)
         env:
           POSTGRES_HOST: localhost
@@ -71,20 +62,17 @@ jobs:
       packages: write
     steps:
       - uses: actions/checkout@v4
-
       - uses: docker/login-action@v3
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Build & push router API image
         uses: docker/build-push-action@v5
         with:
           context: .
           push: true
           tags: ${{ env.IMAGE_ROUTER }}:${{ github.sha }},${{ env.IMAGE_ROUTER }}:latest
-
       - name: Build & push dashboard image
         uses: docker/build-push-action@v5
         with:
@@ -92,20 +80,5 @@ jobs:
           file: ./dashboard/Dockerfile.prod
           push: true
           build-args: |
-            VITE_API_BASE_URL=${{ secrets.DASHBOARD_API_BASE_URL }}
+            VITE_API_BASE_URL=http://localhost:8000
           tags: ${{ env.IMAGE_DASHBOARD }}:${{ github.sha }},${{ env.IMAGE_DASHBOARD }}:latest
-
-  # Fill this in for your actual target once infra exists (see
-  # deploy/DEPLOY_AWS.md). Left as a placeholder so the pipeline is wired
-  # end-to-end without assuming credentials/infra that don't exist yet.
-  deploy:
-    needs: build-and-push
-    if: github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
-    environment: production
-    steps:
-      - name: Deploy to ECS (example)
-        run: |
-          echo "Wire this up once your ECS cluster/service exists, e.g.:"
-          echo "aws ecs update-service --cluster router-cluster --service router-api --force-new-deployment"
-          echo "See deploy/DEPLOY_AWS.md for the full one-time setup."
