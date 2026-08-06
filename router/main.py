@@ -1,14 +1,5 @@
 """
-Phases 1, 3, 4, 5, 6 combined router API.
-
-  Phase 3: /route            classify a query, execute it, return the decision
-  Phase 4: every execution is logged to query_log (query_log table); see
-           classifier/retrain_from_logs.py for the retraining side.
-  Phase 5: /nl-query          same as /route, but Claude translates the NL
-           query into a concrete SQL / semantic / cache-key query first
-  Phase 6: PgBouncer pooling (via backends.py), Redis-down -> Postgres
-           fallback, /metrics + /query-log + /classifier-accuracy for the
-           dashboard.
+combining everything
 """
 import os
 import sys
@@ -36,7 +27,7 @@ from backends import (  # noqa: E402
 )
 
 try:
-    import nl_to_query  # Phase 5 -- optional; requires ANTHROPIC_API_KEY
+    import nl_to_query  #optional
 except Exception:  # pragma: no cover - import-time issues shouldn't kill the API
     nl_to_query = None
 
@@ -109,7 +100,7 @@ def _classify(query_text: str, filters=None, semantic_hint=None):
 
 def _execute_with_fallback(predicted_backend, query_text, **kwargs):
     """
-    Phase 6: if the predicted backend is Redis and Redis is unreachable,
+     if the predicted backend is Redis and Redis is unreachable,
     fall back to Postgres rather than failing the request. Returns
     (result, latency_ms, actual_backend, fell_back).
     """
@@ -220,13 +211,6 @@ def route_query(req: QueryRequest):
 
 @app.post("/nl-query", response_model=NLQueryResponse)
 def nl_query(req: QueryRequest):
-    """
-    Phase 5: classifier picks the backend (as in /route), then Claude
-    translates the English query into something concrete to run against
-    that backend. Falls back to the canned demo query per backend if
-    translation isn't available/fails, so the endpoint stays usable
-    without an API key.
-    """
     predicted_backend, scores, feats = _classify(req.query_text, req.filters, req.semantic_hint)
     confidence = scores[predicted_backend]
 
@@ -282,11 +266,6 @@ def nl_query(req: QueryRequest):
 def frequency_table():
     """Debug endpoint: see what the router currently considers 'hot'."""
     return dict(_frequency_table)
-
-
-# ---------------------------------------------------------------------------
-# Phase 6: dashboard-facing read endpoints
-# ---------------------------------------------------------------------------
 
 @app.get("/metrics")
 def metrics(hours: int = 24):
@@ -384,7 +363,7 @@ def query_log(limit: int = 100):
 
 @app.get("/classifier-accuracy")
 def classifier_accuracy(limit: int = 50):
-    """Phase 4: accuracy-over-time series (evaluated on the frozen held-out
+    """ accuracy-over-time series (evaluated on the frozen held-out
     bootstrap split each retrain -- see classifier/retrain_from_logs.py)."""
     conn = get_pg_connection()
     try:
