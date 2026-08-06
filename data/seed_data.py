@@ -1,5 +1,5 @@
 """
-Phase 1, step 2: load a realistic dataset into all three backends.
+Loads a realistic dataset into all three backends.
 
 - Structured records -> Postgres (customers, products, orders)
 - Embeddings of the *same* products -> pgvector (product_embeddings)
