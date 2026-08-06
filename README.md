@@ -24,15 +24,15 @@ reinforcing its own mistakes.
 
 - **Classification**: a scikit-learn model (logistic regression /
   random forest) trained on labeled query patterns like filter/aggregate
-  keywords → Postgres, numeric-ID lookups → Redis, semantic-similarity
-  phrasing → pgvector.
+  keywords will go to Postgres, numeric-ID lookups will go to Redis, semantic-similarity
+  phrasing will go to pgvector.
 - **Connection pooling**: PgBouncer sits in front of Postgres so pool
   limits are respected under load.
 - **Graceful degradation**: if Redis is unreachable, cache-style
   lookups fall back to Postgres instead of failing the request
   (`fallback: true` in the response).
 - **Continuous retraining**: live routing decisions are logged; a
-  retrain job periodically folds *confident, successful, non-fallback*
+  retrain job periodically folds confident, successful, non-fallback
   predictions back into the training set evaluated against a frozen
   held-out split so a bad retrain never silently gets promoted.
 
