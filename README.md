@@ -1,8 +1,8 @@
-# Intelligent Multi-Database Query Router & Optimizer
+# Multi-Database Query Router & Optimizer
 
 A query router that classifies incoming queries and sends each one to the
-right backend — structured lookups to Postgres, hot-path key lookups to
-Redis, and semantic/similarity search to a vector store (pgvector) —
+right backend, structured lookups to Postgres, hot-path key lookups to
+Redis, and semantic/similarity search to a vector store (pgvector)
 instead of hardcoding routing rules by hand. The classifier retrains
 itself from live traffic on a schedule, with guardrails against
 reinforcing its own mistakes.
@@ -23,7 +23,7 @@ reinforcing its own mistakes.
 ```
 
 - **Classification**: a scikit-learn model (logistic regression /
-  random forest) trained on labeled query patterns — filter/aggregate
+  random forest) trained on labeled query patterns like filter/aggregate
   keywords → Postgres, numeric-ID lookups → Redis, semantic-similarity
   phrasing → pgvector.
 - **Connection pooling**: PgBouncer sits in front of Postgres so pool
@@ -33,7 +33,7 @@ reinforcing its own mistakes.
   (`fallback: true` in the response).
 - **Continuous retraining**: live routing decisions are logged; a
   retrain job periodically folds *confident, successful, non-fallback*
-  predictions back into the training set — evaluated against a frozen
+  predictions back into the training set evaluated against a frozen
   held-out split so a bad retrain never silently gets promoted.
 
 ## What's here
@@ -144,7 +144,7 @@ curl "http://localhost:8000/metrics?hours=1" | python -m json.tool
 ```
 
 `router_vs_baseline.latency_improvement_pct` and `.cost_improvement_pct`
-are the headline numbers — they should come out solidly positive since
+are the headline numbers. They should come out solidly positive since
 the naive baseline runs semantic and cache-style lookups against
 Postgres too, which is the wrong tool for both.
 
@@ -158,18 +158,18 @@ What this does, and why it's not just "retrain on whatever came in":
 
 - Only uses live rows where the router's own prediction was
   **confident, successful, and not a fallback** as reinforcement
-  signal — everything else (low-confidence, failed, or Redis-down-
+  signal, everything else (low-confidence, failed, or Redis-down-
   fallback rows) is left out of training entirely, since those are
   signals something needs *investigating*, not a label to learn from.
 - Live examples are **added to** the original bootstrap set, never
   used alone, so the model can't fully drift onto whatever traffic
   shape happened to dominate recently.
 - Every candidate is scored against a **frozen** held-out split of the
-  *original* bootstrap CSV — the same split every run — so accuracy
+  *original* bootstrap CSV, the same split every run; so accuracy
   numbers are comparable across retrains regardless of what live
   traffic looked like that week. If the new model regresses beyond a
   small tolerance on that frozen set, it's logged (`classifier_metrics`
-  table) but **not promoted** — `model.pkl` stays untouched.
+  table) but **not promoted**  `model.pkl` stays untouched.
 - The router hot-reloads `model.pkl` on its next request (checks the
   file's mtime), so a promoted retrain takes effect without a restart.
 
@@ -211,7 +211,7 @@ docker compose start redis
 - **Cost model** (`router/backends.py: COST_PER_QUERY_USD`) is an
   illustrative flat-rate estimate, not real cloud billing data.
 - **Embeddings** are a toy hash-based encoder (`data/seed_data.py:
-  fake_embedding`), not a real sentence encoder — fine for
+  fake_embedding`), not a real sentence encoder fine for
   demonstrating routing/ANN mechanics, not for real semantic quality.
   Swapping in a real sentence-embedding model is a drop-in replacement
   at the `fake_embedding` call sites.
@@ -220,5 +220,5 @@ docker compose start redis
   `userlist.txt.template` are there as the `auth_type=md5` reference
   for a real deployment.
 - **Classifier accuracy** (100% on the bootstrap set) reflects
-  synthetic, cleanly-separable training data — not a claim about
+  synthetic, cleanly-separable training data and not a claim about
   real-world routing difficulty.
