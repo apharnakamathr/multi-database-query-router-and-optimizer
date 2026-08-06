@@ -6,12 +6,7 @@ Phase 6 hardening added here:
   - Redis-down -> RedisUnavailable, caught by main.py to fall back to Postgres
     instead of crashing the request
   - a rough per-query $ cost model, so /metrics can show cost, not just
-    latency (the doc calls out cost comparisons explicitly)
-
-Phase 5 addition: execute_structured / execute_vector accept an optional
-pre-built query (SQL text, or an embedding source string) so the NL-to-query
-layer's Claude-translated output can actually run, instead of always hitting
-the same canned demo query.
+    latency.
 """
 import os
 import re
@@ -76,7 +71,7 @@ def get_redis_client():
 def execute_structured(query_text: str, translated_sql: str = None):
     """
     Backend: postgres (structured/transactional).
-    If `translated_sql` is supplied (Phase 5's Claude-generated SQL), run it
+    If `translated_sql` is supplied, run it
     (read-only enforced); otherwise fall back to the Phase 1/3 demo query.
     """
     start = time.perf_counter()
@@ -105,9 +100,7 @@ def execute_structured(query_text: str, translated_sql: str = None):
 def execute_vector(query_text: str, embedding_dim: int = 32, translated_description: str = None):
     """
     Backend: pgvector (semantic/similarity search).
-    `translated_description` (Phase 5) is the Claude-normalized semantic
-    intent string used to seed the toy embedding; falls back to the raw
-    query text otherwise. Swap the toy hash-embedding for a real encoder
+    Swap the toy hash-embedding for a real encoder
     (sentence-transformers, or an embeddings API) when moving past demo.
     """
     import numpy as np
