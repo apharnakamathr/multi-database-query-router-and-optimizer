@@ -206,7 +206,7 @@ docker compose start redis
 | `GET /query-log?limit=100` | recent routing decisions (for the dashboard) |
 | `GET /classifier-accuracy?limit=50` | retrain history, evaluated on the frozen held-out set |
 
-## Known simplifications (documented, not hidden)
+## Known simplifications
 
 - **Cost model** (`router/backends.py: COST_PER_QUERY_USD`) is an
   illustrative flat-rate estimate, not real cloud billing data.
