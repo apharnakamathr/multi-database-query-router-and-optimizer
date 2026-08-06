@@ -1,5 +1,4 @@
 """
-Phase 3, steps 5-6:
   - extract features per query
   - train a simple, explainable classifier to predict the best backend
 
