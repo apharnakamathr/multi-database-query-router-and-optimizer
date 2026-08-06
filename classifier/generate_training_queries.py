@@ -1,16 +1,12 @@
 """
-Phase 3 needs labeled (query -> best backend) examples to train on. In the
-full project those come from Phase 2's workload generator run against all
-three backends. Since this build covers Phases 1 + 3 only, this script
-produces a synthetic-but-realistic bootstrap dataset of the three query
+this needs labeled (query -> best backend) examples to train on. In the
+full project those come from  workload generator run against all
+three backends. This script produces a synthetic-but-realistic bootstrap dataset of the three query
 archetypes the doc describes:
 
   - structured/transactional (SQL-shaped filters/joins)  -> postgres
   - semantic/similarity (NL -> embedding search)          -> vector
   - hot-path repeated key lookups                         -> redis
-
-Replace this with real logged traffic (query_log table) once Phase 2/4
-are built -- train_classifier.py doesn't care where the CSV comes from.
 """
 import csv
 import os
