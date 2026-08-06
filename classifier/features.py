@@ -1,9 +1,8 @@
 """
-Phase 3, step 5: turn an incoming query into a feature vector the
+Turn an incoming query into a feature vector the
 classifier can use to pick a backend.
 
-Design note: at this stage (Phase 1 + 3 only, no real workload yet from
-Phase 2 and no feedback loop yet from Phase 4) features are derived from
+Design note: at this stage, features are derived from
 query *shape* via simple, explainable heuristics rather than a learned NLU
 model. That keeps the classifier's decisions inspectable ("why did this
 query get routed to Postgres?") which the doc calls out as a requirement.
